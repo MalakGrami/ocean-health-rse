@@ -18,6 +18,56 @@ export default function AccessibilityPage() {
     }
   }, []);
 
+  const applySettings = (size: string, contrast: boolean, dyslexia: boolean) => {
+    if (typeof window === 'undefined') return;
+
+    const body = document.body;
+
+    // Remove all font size classes
+    body.classList.remove('font-small', 'font-medium', 'font-large', 'font-xlarge');
+    body.classList.add(`font-${size}`);
+
+    // Toggle high contrast
+    if (contrast) {
+      body.classList.add('high-contrast');
+    } else {
+      body.classList.remove('high-contrast');
+    }
+
+    // Toggle dyslexia font
+    if (dyslexia) {
+      body.classList.add('dyslexia-font');
+    } else {
+      body.classList.remove('dyslexia-font');
+    }
+  };
+
+  const handleFontSizeChange = (size: string) => {
+    setFontSize(size);
+    if (typeof window !== 'undefined') {
+      localStorage.setItem('fontSize', size);
+    }
+    applySettings(size, highContrast, dyslexiaFont);
+  };
+
+  const handleHighContrastChange = () => {
+    const newValue = !highContrast;
+    setHighContrast(newValue);
+    if (typeof window !== 'undefined') {
+      localStorage.setItem('highContrast', String(newValue));
+    }
+    applySettings(fontSize, newValue, dyslexiaFont);
+  };
+
+  const handleDyslexiaFontChange = () => {
+    const newValue = !dyslexiaFont;
+    setDyslexiaFont(newValue);
+    if (typeof window !== 'undefined') {
+      localStorage.setItem('dyslexiaFont', String(newValue));
+    }
+    applySettings(fontSize, highContrast, newValue);
+  };
+
   return (
     <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
       <div className="mb-6 flex justify-center">
@@ -33,23 +83,78 @@ export default function AccessibilityPage() {
 
       {/* Live Controls Demo */}
       <section className="mb-8 sm:mb-12 bg-gradient-to-br from-ocean-blue/10 to-sea-green/10 p-4 sm:p-6 md:p-8 rounded-2xl border-2 border-ocean-blue/30">
-        <h2 className="text-2xl sm:text-3xl font-bold mb-3 sm:mb-4">Vos Paramètres Actuels</h2>
-        <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 sm:gap-6">
-          <div className="bg-white dark:bg-gray-800 p-3 sm:p-4 rounded-lg">
-            <h3 className="text-sm sm:text-base font-semibold mb-1 sm:mb-2">Taille de Police</h3>
-            <p className="text-xl sm:text-2xl">{fontSize === 'small' ? 'A-' : fontSize === 'large' ? 'A+' : fontSize === 'xlarge' ? 'A++' : 'A'}</p>
+        <h2 className="text-2xl sm:text-3xl font-bold mb-3 sm:mb-4">Ajustez Vos Paramètres</h2>
+
+        {/* Font Size Control */}
+        <div className="bg-white dark:bg-gray-800 p-4 sm:p-6 rounded-lg mb-4 sm:mb-6">
+          <h3 className="text-base sm:text-lg font-semibold mb-3 sm:mb-4">Taille de Police</h3>
+          <div className="flex flex-wrap gap-2 sm:gap-3">
+            {['small', 'medium', 'large', 'xlarge'].map((size) => (
+              <button
+                key={size}
+                onClick={() => handleFontSizeChange(size)}
+                className={`px-4 sm:px-6 py-2 sm:py-3 rounded-lg font-semibold transition-all ${
+                  fontSize === size
+                    ? 'bg-ocean-blue text-white shadow-md scale-105'
+                    : 'bg-gray-200 dark:bg-gray-700 hover:bg-gray-300 dark:hover:bg-gray-600'
+                }`}
+                aria-pressed={fontSize === size}
+                aria-label={`Taille de police ${size === 'small' ? 'petite' : size === 'medium' ? 'moyenne' : size === 'large' ? 'grande' : 'très grande'}`}
+              >
+                <span className={size === 'small' ? 'text-sm' : size === 'medium' ? 'text-base' : size === 'large' ? 'text-lg' : 'text-xl'}>
+                  {size === 'small' ? 'A-' : size === 'medium' ? 'A' : size === 'large' ? 'A+' : 'A++'}
+                </span>
+              </button>
+            ))}
           </div>
-          <div className="bg-white dark:bg-gray-800 p-3 sm:p-4 rounded-lg">
-            <h3 className="text-sm sm:text-base font-semibold mb-1 sm:mb-2">Contraste Élevé</h3>
-            <p className="text-xl sm:text-2xl">{highContrast ? 'Activé' : 'Désactivé'}</p>
+          <p className="mt-2 text-xs sm:text-sm text-gray-600 dark:text-gray-400">
+            Actuel: {fontSize === 'small' ? 'Petite' : fontSize === 'medium' ? 'Moyenne' : fontSize === 'large' ? 'Grande' : 'Très grande'}
+          </p>
+        </div>
+
+        {/* High Contrast & Dyslexia Font Controls */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6">
+          <div className="bg-white dark:bg-gray-800 p-4 sm:p-6 rounded-lg">
+            <h3 className="text-base sm:text-lg font-semibold mb-3 sm:mb-4">Contraste Élevé</h3>
+            <button
+              onClick={handleHighContrastChange}
+              className={`w-full px-4 sm:px-6 py-3 sm:py-4 rounded-lg font-semibold transition-all ${
+                highContrast
+                  ? 'bg-ocean-blue text-white shadow-md'
+                  : 'bg-gray-200 dark:bg-gray-700 hover:bg-gray-300 dark:hover:bg-gray-600'
+              }`}
+              aria-pressed={highContrast}
+              aria-label={`Contraste élevé ${highContrast ? 'activé' : 'désactivé'}, cliquez pour ${highContrast ? 'désactiver' : 'activer'}`}
+            >
+              {highContrast ? '✓ Activé' : 'Désactivé'}
+            </button>
+            <p className="mt-2 text-xs sm:text-sm text-gray-600 dark:text-gray-400">
+              Améliore la lisibilité pour les malvoyants
+            </p>
           </div>
-          <div className="bg-white dark:bg-gray-800 p-3 sm:p-4 rounded-lg">
-            <h3 className="text-sm sm:text-base font-semibold mb-1 sm:mb-2">Police Dyslexie</h3>
-            <p className="text-xl sm:text-2xl">{dyslexiaFont ? 'Activé' : 'Désactivé'}</p>
+
+          <div className="bg-white dark:bg-gray-800 p-4 sm:p-6 rounded-lg">
+            <h3 className="text-base sm:text-lg font-semibold mb-3 sm:mb-4">Police Dyslexie</h3>
+            <button
+              onClick={handleDyslexiaFontChange}
+              className={`w-full px-4 sm:px-6 py-3 sm:py-4 rounded-lg font-semibold transition-all ${
+                dyslexiaFont
+                  ? 'bg-ocean-blue text-white shadow-md'
+                  : 'bg-gray-200 dark:bg-gray-700 hover:bg-gray-300 dark:hover:bg-gray-600'
+              }`}
+              aria-pressed={dyslexiaFont}
+              aria-label={`Police dyslexie ${dyslexiaFont ? 'activée' : 'désactivée'}, cliquez pour ${dyslexiaFont ? 'désactiver' : 'activer'}`}
+            >
+              {dyslexiaFont ? '✓ Activé' : 'Désactivé'}
+            </button>
+            <p className="mt-2 text-xs sm:text-sm text-gray-600 dark:text-gray-400">
+              Police spécialement conçue pour la dyslexie
+            </p>
           </div>
         </div>
-        <p className="mt-3 sm:mt-4 text-center text-xs sm:text-sm opacity-80">
-          Utilisez le bouton de contrôles d'accessibilité (en bas à droite) pour ajuster ces paramètres
+
+        <p className="mt-4 sm:mt-6 text-center text-xs sm:text-sm opacity-80">
+          Les changements sont appliqués immédiatement et sauvegardés dans votre navigateur
         </p>
       </section>
 

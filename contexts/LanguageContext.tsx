@@ -1,6 +1,7 @@
 'use client';
 
 import React, { createContext, useContext, useState, useEffect } from 'react';
+import { translations } from './translations';
 
 type Language = 'fr' | 'en';
 
@@ -11,45 +12,6 @@ interface LanguageContextType {
 }
 
 const LanguageContext = createContext<LanguageContextType | undefined>(undefined);
-
-const translations = {
-  fr: {
-    // Navigation
-    'nav.home': 'Accueil',
-    'nav.goals': 'Mes Objectifs',
-    'nav.learn': 'Informations',
-    'nav.transparency': 'Transparence RSE',
-    'nav.accessibility': 'Accessibilité',
-
-    // Home
-    'home.title': 'Carnet Santé Personnel',
-    'home.subtitle': 'Suivez votre santé de manière responsable et sécurisée. Plateforme éthique, accessible et éco-conçue selon les principes du RSE by Design.',
-    'home.cta.goals': 'Mes Objectifs Santé',
-    'home.cta.learn': 'En Savoir Plus',
-
-    // Common
-    'common.source': 'Source',
-    'common.readMore': 'En savoir plus',
-  },
-  en: {
-    // Navigation
-    'nav.home': 'Home',
-    'nav.goals': 'My Goals',
-    'nav.learn': 'Information',
-    'nav.transparency': 'RSE Transparency',
-    'nav.accessibility': 'Accessibility',
-
-    // Home
-    'home.title': 'Personal Health Tracker',
-    'home.subtitle': 'Track your health responsibly and securely. Ethical, accessible platform designed according to CSR by Design principles.',
-    'home.cta.goals': 'My Health Goals',
-    'home.cta.learn': 'Learn More',
-
-    // Common
-    'common.source': 'Source',
-    'common.readMore': 'Learn more',
-  },
-};
 
 export function LanguageProvider({ children }: { children: React.ReactNode }) {
   const [language, setLanguageState] = useState<Language>('fr');
