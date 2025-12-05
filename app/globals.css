@@ -1,26 +1,130 @@
 @import "tailwindcss";
 
+/* Carnet Santé Personnel RSE - Custom CSS Variables */
 :root {
+  --medical-blue: #0066CC;
+  --health-green: #00A651;
+  --professional-dark: #1a2332;
+  --health-light: #E8F4F8;
+  --medical-accent: #0099FF;
+
+  /* Light mode defaults */
   --background: #ffffff;
-  --foreground: #171717;
+  --foreground: #2c3e50;
+  --card-bg: #f8f9fa;
+
+  /* Backwards compatibility aliases */
+  --ocean-blue: var(--medical-blue);
+  --sea-green: var(--health-green);
+  --ocean-dark: var(--professional-dark);
+  --ocean-light: var(--health-light);
+  --ocean-accent: var(--medical-accent);
 }
 
 @theme inline {
+  --color-medical-blue: var(--medical-blue);
+  --color-health-green: var(--health-green);
+  --color-professional-dark: var(--professional-dark);
+  --color-health-light: var(--health-light);
+  --color-medical-accent: var(--medical-accent);
+
+  /* Backwards compatibility */
+  --color-ocean-blue: var(--medical-blue);
+  --color-sea-green: var(--health-green);
+  --color-ocean-dark: var(--professional-dark);
+  --color-ocean-light: var(--health-light);
+  --color-ocean-accent: var(--medical-accent);
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
 }
 
+/* Dark mode - default for RSE environmental goals */
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+    --background: #1a2332;
+    --foreground: #E8F4F8;
+    --card-bg: #2a3544;
   }
+}
+
+/* High contrast mode for accessibility */
+.high-contrast {
+  --background: #000000 !important;
+  --foreground: #ffffff !important;
+  --medical-blue: #00BFFF !important;
+  --health-green: #00FF7F !important;
+  --ocean-blue: #00BFFF !important;
+  --sea-green: #00FF7F !important;
+}
+
+/* Font size accessibility controls */
+.font-small {
+  font-size: 0.875rem;
+}
+
+.font-medium {
+  font-size: 1rem;
+}
+
+.font-large {
+  font-size: 1.125rem;
+}
+
+.font-xlarge {
+  font-size: 1.25rem;
+}
+
+/* Dyslexia-friendly font support - Professional alternative */
+.dyslexia-font {
+  font-family: 'Arial', 'Verdana', sans-serif;
+  letter-spacing: 0.08em;
+  word-spacing: 0.12em;
+  line-height: 1.8;
+  font-weight: 500;
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* Improved focus visibility for keyboard navigation */
+*:focus-visible {
+  outline: 3px solid var(--medical-accent);
+  outline-offset: 2px;
+}
+
+/* Skip to main content link for accessibility */
+.skip-link {
+  position: absolute;
+  top: -40px;
+  left: 0;
+  background: var(--medical-blue);
+  color: white;
+  padding: 8px;
+  text-decoration: none;
+  z-index: 100;
+}
+
+.skip-link:focus {
+  top: 0;
+}
+
+/* Smooth scrolling */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Reduce motion for users who prefer it */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
 }
