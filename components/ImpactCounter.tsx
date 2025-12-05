@@ -60,11 +60,11 @@ export default function ImpactCounter() {
   };
 
   return (
-    <div className="w-full bg-gradient-to-br from-ocean-blue to-sea-green p-8 rounded-2xl shadow-lg">
-      <h2 className="text-2xl md:text-3xl font-bold text-white mb-6 text-center">
+    <div className="w-full bg-gradient-to-br from-ocean-blue to-sea-green p-4 sm:p-6 md:p-8 rounded-2xl shadow-lg">
+      <h2 className="text-xl sm:text-2xl md:text-3xl font-bold text-white mb-4 sm:mb-6 text-center px-2">
         Impact Communautaire en Direct
       </h2>
-      <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
+      <div className="grid grid-cols-2 md:grid-cols-4 gap-3 sm:gap-4 md:gap-6">
         <StatCard
           value={formatNumber(stats.users)}
           label="Utilisateurs Actifs"
@@ -86,7 +86,7 @@ export default function ImpactCounter() {
           icon="Objectifs"
         />
       </div>
-      <p className="text-white/80 text-sm text-center mt-6">
+      <p className="text-white/80 text-xs sm:text-sm text-center mt-4 sm:mt-6 px-2">
         Mis à jour en direct • Toutes les données stockées localement pour votre confidentialité (RGPD)
       </p>
     </div>
@@ -101,17 +101,17 @@ interface StatCardProps {
 
 function StatCard({ value, label, icon }: StatCardProps) {
   return (
-    <div className="bg-white/10 backdrop-blur-sm rounded-xl p-4 text-center transition-transform hover:scale-105">
+    <div className="bg-white/10 backdrop-blur-sm rounded-lg sm:rounded-xl p-2 sm:p-3 md:p-4 text-center transition-transform hover:scale-105">
       <div
-        className="text-xs font-semibold mb-2 text-white/70 uppercase tracking-wider"
+        className="text-[10px] sm:text-xs font-semibold mb-1 sm:mb-2 text-white/70 uppercase tracking-wider"
         aria-hidden="true"
       >
         {icon}
       </div>
-      <div className="text-2xl md:text-3xl font-bold text-white mb-1">
+      <div className="text-lg sm:text-xl md:text-2xl lg:text-3xl font-bold text-white mb-0.5 sm:mb-1">
         {value}
       </div>
-      <div className="text-xs md:text-sm text-white/90">
+      <div className="text-[10px] sm:text-xs md:text-sm text-white/90 leading-tight">
         {label}
       </div>
     </div>

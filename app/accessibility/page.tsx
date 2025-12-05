@@ -24,50 +24,50 @@ export default function AccessibilityPage() {
         <CarbonBadge pageName="Page Accessibilité" estimatedKB={40} />
       </div>
 
-      <h1 className="text-4xl md:text-5xl font-bold mb-4 text-center bg-gradient-to-r from-ocean-blue to-sea-green bg-clip-text text-transparent">
+      <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4 text-center bg-gradient-to-r from-ocean-blue to-sea-green bg-clip-text text-transparent px-4">
         Fonctionnalités d'Accessibilité
       </h1>
-      <p className="text-xl text-gray-700 dark:text-gray-300 mb-12 text-center max-w-3xl mx-auto">
+      <p className="text-base sm:text-lg md:text-xl text-gray-700 dark:text-gray-300 mb-8 sm:mb-12 text-center max-w-3xl mx-auto px-4">
         La santé est un droit universel, et l'accès aux outils de santé numérique aussi. Notre plateforme est conçue pour être utilisable par tous, notamment les 12 millions de Français en situation de handicap.
       </p>
 
       {/* Live Controls Demo */}
-      <section className="mb-12 bg-gradient-to-br from-ocean-blue/10 to-sea-green/10 p-8 rounded-2xl border-2 border-ocean-blue/30">
-        <h2 className="text-3xl font-bold mb-4">Vos Paramètres Actuels</h2>
-        <div className="grid md:grid-cols-3 gap-6">
-          <div className="bg-white dark:bg-gray-800 p-4 rounded-lg">
-            <h3 className="font-semibold mb-2">Taille de Police</h3>
-            <p className="text-2xl">{fontSize === 'small' ? 'A-' : fontSize === 'large' ? 'A+' : fontSize === 'xlarge' ? 'A++' : 'A'}</p>
+      <section className="mb-8 sm:mb-12 bg-gradient-to-br from-ocean-blue/10 to-sea-green/10 p-4 sm:p-6 md:p-8 rounded-2xl border-2 border-ocean-blue/30">
+        <h2 className="text-2xl sm:text-3xl font-bold mb-3 sm:mb-4">Vos Paramètres Actuels</h2>
+        <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 sm:gap-6">
+          <div className="bg-white dark:bg-gray-800 p-3 sm:p-4 rounded-lg">
+            <h3 className="text-sm sm:text-base font-semibold mb-1 sm:mb-2">Taille de Police</h3>
+            <p className="text-xl sm:text-2xl">{fontSize === 'small' ? 'A-' : fontSize === 'large' ? 'A+' : fontSize === 'xlarge' ? 'A++' : 'A'}</p>
           </div>
-          <div className="bg-white dark:bg-gray-800 p-4 rounded-lg">
-            <h3 className="font-semibold mb-2">Contraste Élevé</h3>
-            <p className="text-2xl">{highContrast ? 'Activé' : 'Désactivé'}</p>
+          <div className="bg-white dark:bg-gray-800 p-3 sm:p-4 rounded-lg">
+            <h3 className="text-sm sm:text-base font-semibold mb-1 sm:mb-2">Contraste Élevé</h3>
+            <p className="text-xl sm:text-2xl">{highContrast ? 'Activé' : 'Désactivé'}</p>
           </div>
-          <div className="bg-white dark:bg-gray-800 p-4 rounded-lg">
-            <h3 className="font-semibold mb-2">Police Dyslexie</h3>
-            <p className="text-2xl">{dyslexiaFont ? 'Activé' : 'Désactivé'}</p>
+          <div className="bg-white dark:bg-gray-800 p-3 sm:p-4 rounded-lg">
+            <h3 className="text-sm sm:text-base font-semibold mb-1 sm:mb-2">Police Dyslexie</h3>
+            <p className="text-xl sm:text-2xl">{dyslexiaFont ? 'Activé' : 'Désactivé'}</p>
           </div>
         </div>
-        <p className="mt-4 text-center text-sm opacity-80">
+        <p className="mt-3 sm:mt-4 text-center text-xs sm:text-sm opacity-80">
           Utilisez le bouton de contrôles d'accessibilité (en bas à droite) pour ajuster ces paramètres
         </p>
       </section>
 
       {/* WCAG Compliance */}
-      <section className="mb-12">
-        <h2 className="text-3xl font-bold mb-6">Conformité WCAG 2.1 AAA</h2>
-        <p className="text-lg text-gray-700 dark:text-gray-300 mb-6">
+      <section className="mb-8 sm:mb-12">
+        <h2 className="text-2xl sm:text-3xl font-bold mb-4 sm:mb-6 px-4">Conformité WCAG 2.1 AAA</h2>
+        <p className="text-base sm:text-lg text-gray-700 dark:text-gray-300 mb-4 sm:mb-6 px-4">
           Essentiel pour les 12 millions de Français en situation de handicap et les 60% d'utilisateurs de santé de plus de 50 ans.
         </p>
-        <div className="grid md:grid-cols-2 gap-6">
-          <div className="bg-white dark:bg-gray-800 p-6 rounded-xl shadow-md">
-            <div className="flex items-center gap-3 mb-3">
-              <div className="w-10 h-10 flex items-center justify-center bg-ocean-blue/10 rounded-lg text-ocean-blue text-xl">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6">
+          <div className="bg-white dark:bg-gray-800 p-4 sm:p-6 rounded-xl shadow-md">
+            <div className="flex items-center gap-2 sm:gap-3 mb-2 sm:mb-3">
+              <div className="w-8 h-8 sm:w-10 sm:h-10 flex items-center justify-center bg-ocean-blue/10 rounded-lg text-ocean-blue text-lg sm:text-xl">
                 <FaKeyboard />
               </div>
-              <h3 className="text-xl font-bold">Navigation Clavier</h3>
+              <h3 className="text-lg sm:text-xl font-bold">Navigation Clavier</h3>
             </div>
-            <ul className="space-y-2 text-gray-700 dark:text-gray-300">
+            <ul className="space-y-1 sm:space-y-2 text-sm sm:text-base text-gray-700 dark:text-gray-300">
               <li>• Tab pour parcourir tous les éléments interactifs</li>
               <li>• Entrée/Espace pour activer boutons et liens</li>
               <li>• Échap pour fermer modales et menus</li>
@@ -180,15 +180,15 @@ export default function AccessibilityPage() {
       </section>
 
       {/* Mobile Accessibility */}
-      <section className="mb-12">
-        <h2 className="text-3xl font-bold mb-6">Accessibilité Mobile</h2>
-        <p className="text-lg text-gray-700 dark:text-gray-300 mb-4">
+      <section className="mb-8 sm:mb-12">
+        <h2 className="text-2xl sm:text-3xl font-bold mb-4 sm:mb-6 px-4">Accessibilité Mobile</h2>
+        <p className="text-base sm:text-lg text-gray-700 dark:text-gray-300 mb-3 sm:mb-4 px-4">
           Crucial pour les zones rurales et populations âgées avec faible débit internet.
         </p>
-        <div className="bg-gradient-to-br from-sea-green/10 to-ocean-blue/10 p-6 rounded-xl">
-          <ul className="space-y-3 text-gray-700 dark:text-gray-300">
-            <li className="flex items-start gap-3">
-              <div className="w-8 h-8 flex items-center justify-center bg-ocean-blue/10 rounded flex-shrink-0 text-ocean-blue">
+        <div className="bg-gradient-to-br from-sea-green/10 to-ocean-blue/10 p-4 sm:p-6 rounded-xl">
+          <ul className="space-y-2 sm:space-y-3 text-sm sm:text-base text-gray-700 dark:text-gray-300">
+            <li className="flex items-start gap-2 sm:gap-3">
+              <div className="w-7 h-7 sm:w-8 sm:h-8 flex items-center justify-center bg-ocean-blue/10 rounded flex-shrink-0 text-ocean-blue text-sm sm:text-base">
                 <FaMobileAlt />
               </div>
               <span><strong>Design Responsive:</strong> Optimisé pour toutes tailles d'écran, des petits téléphones aux grands écrans</span>
@@ -251,12 +251,12 @@ export default function AccessibilityPage() {
       </section>
 
       {/* Report Issues */}
-      <section className="text-center bg-ocean-blue/10 p-8 rounded-2xl">
-        <h2 className="text-2xl font-bold mb-4">Un Problème d'Accessibilité?</h2>
-        <p className="text-gray-700 dark:text-gray-300 mb-6 max-w-2xl mx-auto">
+      <section className="text-center bg-ocean-blue/10 p-4 sm:p-6 md:p-8 rounded-2xl">
+        <h2 className="text-xl sm:text-2xl font-bold mb-3 sm:mb-4 px-4">Un Problème d'Accessibilité?</h2>
+        <p className="text-sm sm:text-base text-gray-700 dark:text-gray-300 mb-4 sm:mb-6 max-w-2xl mx-auto px-4">
           Nous nous engageons à rendre cette plateforme accessible à tous. Si vous rencontrez des obstacles, merci de nous le signaler.
         </p>
-        <div className="text-sm text-gray-600 dark:text-gray-400 bg-white dark:bg-gray-800 p-4 rounded-lg inline-block">
+        <div className="text-xs sm:text-sm text-gray-600 dark:text-gray-400 bg-white dark:bg-gray-800 p-3 sm:p-4 rounded-lg inline-block">
           Conformité WCAG 2.1 AAA • Score Lighthouse Accessibilité: 100/100
         </div>
       </section>

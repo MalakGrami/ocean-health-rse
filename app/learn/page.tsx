@@ -10,17 +10,17 @@ export default function LearnPage() {
         <CarbonBadge pageName="Page Informations" estimatedKB={48} />
       </div>
 
-      <h1 className="text-4xl md:text-5xl font-bold mb-4 text-center bg-gradient-to-r from-ocean-blue to-sea-green bg-clip-text text-transparent">
+      <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4 text-center bg-gradient-to-r from-ocean-blue to-sea-green bg-clip-text text-transparent px-4">
         Informations Santé
       </h1>
-      <p className="text-xl text-gray-700 dark:text-gray-300 mb-12 text-center max-w-3xl mx-auto">
+      <p className="text-base sm:text-lg md:text-xl text-gray-700 dark:text-gray-300 mb-8 sm:mb-12 text-center max-w-3xl mx-auto px-4">
         Comprenez l'importance du suivi de santé, l'observance thérapeutique et comment améliorer votre bien-être au quotidien.
       </p>
 
       {/* Health Facts */}
-      <section className="mb-12">
-        <h2 className="text-3xl font-bold mb-6">Faits Essentiels sur la Santé</h2>
-        <div className="grid md:grid-cols-2 gap-6">
+      <section className="mb-8 sm:mb-12">
+        <h2 className="text-2xl sm:text-3xl font-bold mb-4 sm:mb-6 px-4">Faits Essentiels sur la Santé</h2>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6">
           <FactCard
             icon={FaPills}
             title="20M de Malades Chroniques"
@@ -73,8 +73,8 @@ export default function LearnPage() {
       </section>
 
       {/* How Your Actions Help */}
-      <section className="mb-12 bg-gradient-to-br from-ocean-blue/10 to-sea-green/10 p-8 rounded-2xl">
-        <h2 className="text-3xl font-bold mb-6">Comment Vos Actions Améliorent Votre Santé</h2>
+      <section className="mb-8 sm:mb-12 bg-gradient-to-br from-ocean-blue/10 to-sea-green/10 p-4 sm:p-6 md:p-8 rounded-2xl">
+        <h2 className="text-xl sm:text-2xl md:text-3xl font-bold mb-4 sm:mb-6">Comment Vos Actions Améliorent Votre Santé</h2>
         <div className="space-y-6">
           <ImpactExplanation
             action="Suivre son Traitement 30 Jours"
@@ -98,9 +98,9 @@ export default function LearnPage() {
       </section>
 
       {/* Visual Progress */}
-      <section className="mb-12">
-        <h2 className="text-3xl font-bold mb-6">Le Pouvoir de l'Action Collective</h2>
-        <div className="bg-white dark:bg-gray-800 p-8 rounded-2xl shadow-md">
+      <section className="mb-8 sm:mb-12">
+        <h2 className="text-2xl sm:text-3xl font-bold mb-4 sm:mb-6 px-4">Le Pouvoir de l'Action Collective</h2>
+        <div className="bg-white dark:bg-gray-800 p-4 sm:p-6 md:p-8 rounded-2xl shadow-md">
           <div className="space-y-6">
             <ProgressVisualization
               label="Si 10% des patients chroniques améliorent leur observance"
@@ -125,9 +125,9 @@ export default function LearnPage() {
       </section>
 
       {/* What You Can Do Today */}
-      <section className="mb-12">
-        <h2 className="text-3xl font-bold mb-6 text-center">Ce Que Vous Pouvez Faire Aujourd'hui</h2>
-        <div className="grid md:grid-cols-3 gap-6">
+      <section className="mb-8 sm:mb-12">
+        <h2 className="text-2xl sm:text-3xl font-bold mb-4 sm:mb-6 text-center px-4">Ce Que Vous Pouvez Faire Aujourd'hui</h2>
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 sm:gap-6">
           <ActionGuide
             icon="Suivi"
             title="Suivre Votre Traitement"
@@ -162,9 +162,9 @@ export default function LearnPage() {
       </section>
 
       {/* Resources */}
-      <section className="mb-12 bg-ocean-dark text-white p-8 rounded-2xl">
-        <h2 className="text-3xl font-bold mb-6">Ressources Officielles de Confiance</h2>
-        <div className="grid md:grid-cols-2 gap-4">
+      <section className="mb-8 sm:mb-12 bg-ocean-dark text-white p-4 sm:p-6 md:p-8 rounded-2xl">
+        <h2 className="text-2xl sm:text-3xl font-bold mb-4 sm:mb-6">Ressources Officielles de Confiance</h2>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-3 sm:gap-4">
           <ResourceLink
             name="Ameli.fr - Assurance Maladie"
             description="Informations santé fiables, droits et démarches"
@@ -189,14 +189,14 @@ export default function LearnPage() {
       </section>
 
       {/* Take Action CTA */}
-      <section className="text-center bg-gradient-to-r from-ocean-blue to-sea-green p-12 rounded-2xl text-white">
-        <h2 className="text-3xl font-bold mb-4">Prêt à Prendre Soin de Votre Santé?</h2>
-        <p className="text-xl mb-8 max-w-2xl mx-auto">
+      <section className="text-center bg-gradient-to-r from-ocean-blue to-sea-green p-6 sm:p-8 md:p-12 rounded-2xl text-white">
+        <h2 className="text-2xl sm:text-3xl font-bold mb-3 sm:mb-4 px-4">Prêt à Prendre Soin de Votre Santé?</h2>
+        <p className="text-base sm:text-lg md:text-xl mb-6 sm:mb-8 max-w-2xl mx-auto px-4">
           La connaissance est importante, mais l'action fait la différence. Fixez votre premier objectif santé aujourd'hui.
         </p>
         <Link
           href="/pledge"
-          className="inline-block bg-white text-ocean-blue font-bold py-4 px-8 rounded-full text-lg hover:bg-gray-100 transition-all transform hover:scale-105 shadow-lg"
+          className="inline-block bg-white text-ocean-blue font-bold py-3 sm:py-4 px-6 sm:px-8 rounded-full text-base sm:text-lg hover:bg-gray-100 transition-all transform hover:scale-105 shadow-lg"
         >
           Créer Mon Objectif Santé
         </Link>
@@ -216,18 +216,18 @@ interface FactCardProps {
 
 function FactCard({ icon: Icon, title, fact, impact, source, link }: FactCardProps) {
   return (
-    <div className="bg-white dark:bg-gray-800 p-6 rounded-xl shadow-md hover:shadow-lg transition-shadow">
-      <div className="text-4xl mb-3 text-ocean-blue" aria-hidden="true">
+    <div className="bg-white dark:bg-gray-800 p-4 sm:p-6 rounded-xl shadow-md hover:shadow-lg transition-shadow">
+      <div className="text-3xl sm:text-4xl mb-2 sm:mb-3 text-ocean-blue" aria-hidden="true">
         <Icon />
       </div>
-      <h3 className="text-xl font-bold mb-2">{title}</h3>
-      <p className="text-gray-700 dark:text-gray-300 mb-3">{fact}</p>
-      <p className="text-sm text-ocean-blue dark:text-ocean-accent mb-3 italic">{impact}</p>
+      <h3 className="text-lg sm:text-xl font-bold mb-2">{title}</h3>
+      <p className="text-sm sm:text-base text-gray-700 dark:text-gray-300 mb-2 sm:mb-3">{fact}</p>
+      <p className="text-xs sm:text-sm text-ocean-blue dark:text-ocean-accent mb-2 sm:mb-3 italic">{impact}</p>
       <a
         href={link}
         target="_blank"
         rel="noopener noreferrer"
-        className="text-sm text-gray-600 dark:text-gray-400 hover:text-ocean-blue transition-colors"
+        className="text-xs sm:text-sm text-gray-600 dark:text-gray-400 hover:text-ocean-blue transition-colors"
       >
         Source: {source} →
       </a>
@@ -244,9 +244,9 @@ interface ImpactExplanationProps {
 
 function ImpactExplanation({ action, direct, indirect, multiplier }: ImpactExplanationProps) {
   return (
-    <div className="bg-white dark:bg-gray-800 p-6 rounded-lg">
-      <h3 className="text-xl font-bold mb-3">{action}</h3>
-      <div className="space-y-2 text-gray-700 dark:text-gray-300">
+    <div className="bg-white dark:bg-gray-800 p-4 sm:p-6 rounded-lg">
+      <h3 className="text-lg sm:text-xl font-bold mb-2 sm:mb-3">{action}</h3>
+      <div className="space-y-2 text-sm sm:text-base text-gray-700 dark:text-gray-300">
         <p><strong>Direct Impact:</strong> {direct}</p>
         <p><strong>Indirect Impact:</strong> {indirect}</p>
         <p className="text-sea-green font-semibold"><strong>Multiplier Effect:</strong> {multiplier}</p>
@@ -288,16 +288,16 @@ interface ActionGuideProps {
 
 function ActionGuide({ icon, title, actions }: ActionGuideProps) {
   return (
-    <div className="bg-white dark:bg-gray-800 p-6 rounded-xl shadow-md">
-      <div className="text-sm font-bold mb-3 text-center text-ocean-blue px-3 py-1 bg-ocean-light dark:bg-ocean-dark rounded inline-block w-full" aria-hidden="true">
+    <div className="bg-white dark:bg-gray-800 p-4 sm:p-6 rounded-xl shadow-md">
+      <div className="text-xs sm:text-sm font-bold mb-2 sm:mb-3 text-center text-ocean-blue px-2 sm:px-3 py-1 bg-ocean-light dark:bg-ocean-dark rounded inline-block w-full" aria-hidden="true">
         {icon}
       </div>
-      <h3 className="text-xl font-bold mb-4 text-center">{title}</h3>
+      <h3 className="text-lg sm:text-xl font-bold mb-3 sm:mb-4 text-center">{title}</h3>
       <ul className="space-y-2">
         {actions.map((action, index) => (
           <li key={index} className="flex items-start gap-2">
-            <span className="text-sea-green mt-1 font-bold">✓</span>
-            <span className="text-gray-700 dark:text-gray-300">{action}</span>
+            <span className="text-sea-green mt-0.5 sm:mt-1 font-bold text-sm sm:text-base">✓</span>
+            <span className="text-sm sm:text-base text-gray-700 dark:text-gray-300">{action}</span>
           </li>
         ))}
       </ul>

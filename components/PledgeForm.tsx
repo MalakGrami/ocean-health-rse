@@ -99,19 +99,19 @@ export default function HealthGoalsForm() {
 
   if (submitted) {
     return (
-      <div className="bg-gradient-to-br from-sea-green to-ocean-blue p-8 rounded-2xl shadow-lg text-white text-center">
-        <div className="w-16 h-16 mx-auto mb-4 bg-white/20 rounded-full flex items-center justify-center">
-          <svg width="32" height="32" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <div className="bg-gradient-to-br from-sea-green to-ocean-blue p-4 sm:p-6 md:p-8 rounded-2xl shadow-lg text-white text-center">
+        <div className="w-12 h-12 sm:w-16 sm:h-16 mx-auto mb-4 bg-white/20 rounded-full flex items-center justify-center">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" className="sm:w-8 sm:h-8">
             <path d="M20 6L9 17L4 12" stroke="white" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"/>
           </svg>
         </div>
-        <h3 className="text-2xl font-bold mb-2">Objectif Enregistré avec Succès</h3>
-        <p className="text-lg mb-4">
+        <h3 className="text-xl sm:text-2xl font-bold mb-2">Objectif Enregistré avec Succès</h3>
+        <p className="text-base sm:text-lg mb-4">
           {name || 'Anonyme'}, votre engagement contribue à votre santé!
         </p>
-        <div className="bg-white/20 rounded-lg p-4 mb-6">
-          <p className="text-3xl font-bold">{totalGoals}</p>
-          <p className="text-sm">Objectifs Santé Enregistrés par la Communauté</p>
+        <div className="bg-white/20 rounded-lg p-3 sm:p-4 mb-4 sm:mb-6">
+          <p className="text-2xl sm:text-3xl font-bold">{totalGoals}</p>
+          <p className="text-xs sm:text-sm">Objectifs Santé Enregistrés par la Communauté</p>
         </div>
         <button
           onClick={() => {
@@ -120,7 +120,7 @@ export default function HealthGoalsForm() {
             setCustomGoal('');
             setName('');
           }}
-          className="bg-white text-ocean-blue px-6 py-2 rounded-full font-semibold hover:bg-gray-100 transition-colors"
+          className="bg-white text-ocean-blue px-4 sm:px-6 py-2 rounded-full font-semibold hover:bg-gray-100 transition-colors text-sm sm:text-base"
         >
           Ajouter un Autre Objectif
         </button>
@@ -129,14 +129,14 @@ export default function HealthGoalsForm() {
   }
 
   return (
-    <form onSubmit={handleSubmit} className="space-y-6">
+    <form onSubmit={handleSubmit} className="space-y-4 sm:space-y-6">
       <div>
-        <h3 className="text-xl font-bold mb-4">Choisissez Votre Objectif Santé</h3>
-        <div className="grid gap-4">
+        <h3 className="text-lg sm:text-xl font-bold mb-3 sm:mb-4">Choisissez Votre Objectif Santé</h3>
+        <div className="grid gap-3 sm:gap-4">
           {HEALTH_GOAL_OPTIONS.map((goal) => (
             <label
               key={goal.id}
-              className={`border-2 rounded-lg p-4 cursor-pointer transition-all ${
+              className={`border-2 rounded-lg p-3 sm:p-4 cursor-pointer transition-all ${
                 selectedGoal === goal.id
                   ? 'border-ocean-blue bg-ocean-blue/10'
                   : 'border-gray-300 dark:border-gray-600 hover:border-ocean-blue/50'
@@ -150,24 +150,24 @@ export default function HealthGoalsForm() {
                 onChange={(e) => setSelectedGoal(e.target.value)}
                 className="sr-only"
               />
-              <div className="flex items-start gap-3">
+              <div className="flex items-start gap-2 sm:gap-3">
                 <div className="flex-shrink-0 mt-1">
                   <div
-                    className={`w-5 h-5 rounded-full border-2 flex items-center justify-center ${
+                    className={`w-4 h-4 sm:w-5 sm:h-5 rounded-full border-2 flex items-center justify-center ${
                       selectedGoal === goal.id
                         ? 'border-ocean-blue bg-ocean-blue'
                         : 'border-gray-400'
                     }`}
                   >
                     {selectedGoal === goal.id && (
-                      <div className="w-2 h-2 bg-white rounded-full"></div>
+                      <div className="w-1.5 h-1.5 sm:w-2 sm:h-2 bg-white rounded-full"></div>
                     )}
                   </div>
                 </div>
-                <div className="flex-1">
-                  <div className="font-semibold text-lg">{goal.title}</div>
-                  <div className="text-sm opacity-80 mt-1">{goal.description}</div>
-                  <div className="text-sm text-sea-green font-medium mt-2">
+                <div className="flex-1 min-w-0">
+                  <div className="font-semibold text-base sm:text-lg">{goal.title}</div>
+                  <div className="text-xs sm:text-sm opacity-80 mt-1">{goal.description}</div>
+                  <div className="text-xs sm:text-sm text-sea-green font-medium mt-1 sm:mt-2">
                     Impact: {goal.impact}
                   </div>
                 </div>
@@ -179,14 +179,14 @@ export default function HealthGoalsForm() {
 
       {selectedGoal === 'custom' && (
         <div>
-          <label htmlFor="customGoal" className="block font-semibold mb-2">
+          <label htmlFor="customGoal" className="block font-semibold mb-2 text-sm sm:text-base">
             Votre Objectif Personnalisé
           </label>
           <textarea
             id="customGoal"
             value={customGoal}
             onChange={(e) => setCustomGoal(e.target.value)}
-            className="w-full px-4 py-2 border-2 border-gray-300 dark:border-gray-600 rounded-lg focus:border-ocean-blue focus:outline-none bg-transparent"
+            className="w-full px-3 sm:px-4 py-2 border-2 border-gray-300 dark:border-gray-600 rounded-lg focus:border-ocean-blue focus:outline-none bg-transparent text-sm sm:text-base"
             rows={3}
             placeholder="Décrivez votre objectif santé personnalisé..."
             required={selectedGoal === 'custom'}
@@ -195,7 +195,7 @@ export default function HealthGoalsForm() {
       )}
 
       <div>
-        <label htmlFor="name" className="block font-semibold mb-2">
+        <label htmlFor="name" className="block font-semibold mb-2 text-sm sm:text-base">
           Votre Nom (Optionnel)
         </label>
         <input
@@ -203,22 +203,22 @@ export default function HealthGoalsForm() {
           id="name"
           value={name}
           onChange={(e) => setName(e.target.value)}
-          className="w-full px-4 py-2 border-2 border-gray-300 dark:border-gray-600 rounded-lg focus:border-ocean-blue focus:outline-none bg-transparent"
+          className="w-full px-3 sm:px-4 py-2 border-2 border-gray-300 dark:border-gray-600 rounded-lg focus:border-ocean-blue focus:outline-none bg-transparent text-sm sm:text-base"
           placeholder="Anonyme"
         />
-        <p className="text-sm opacity-70 mt-1">
+        <p className="text-xs sm:text-sm opacity-70 mt-1">
           Toutes vos données restent sur votre appareil. Conforme RGPD - aucun suivi ou collecte.
         </p>
       </div>
 
       <button
         type="submit"
-        className="w-full bg-ocean-blue hover:bg-ocean-blue/90 text-white font-bold py-3 px-6 rounded-lg transition-colors"
+        className="w-full bg-ocean-blue hover:bg-ocean-blue/90 text-white font-bold py-2.5 sm:py-3 px-4 sm:px-6 rounded-lg transition-colors text-sm sm:text-base"
       >
         Enregistrer Mon Objectif
       </button>
 
-      <div className="text-center text-sm opacity-80">
+      <div className="text-center text-xs sm:text-sm opacity-80">
         <p>{totalGoals} objectifs santé enregistrés par la communauté</p>
       </div>
     </form>
